@@ -10,7 +10,7 @@ public class RelojArena {
 	
 	// Complete the hourglassSum function below.
     static int hourglassSum(int[][] arr) {
-//    	ArrayList<Integer> sumasReloj = new ArrayList<Integer>();
+//    	ArrayList<Integer> sumasReloj = new ArrayList<>();
     	int[][] reloj;
     	int sumMax = 0;
     	
@@ -60,10 +60,8 @@ public class RelojArena {
         			System.out.println();
         		}
         		sumAct += reloj[1][1];
-//        		sumasReloj[] = {sumAct};
-//        		if(sumAct < 0) {
-//        			
-//        		}
+//        		sumasReloj.add(sumAct);
+        		
         		if(sumAct > sumMax) {
         			sumMax = sumAct;
         		}
@@ -76,6 +74,12 @@ public class RelojArena {
     	}//end ciclo inicial 
     	 
     	System.out.println("Suma mayor: " + sumMax);
+//    	System.out.println("Arreglo con valores:");
+//    	for(int t:sumasReloj) {
+//    		System.out.println(t);
+//    	}
+//    	
+//    	Integer[] valoresReloj = (Integer[]) sumasReloj.toArray();
     	return sumMax;
     }
 
