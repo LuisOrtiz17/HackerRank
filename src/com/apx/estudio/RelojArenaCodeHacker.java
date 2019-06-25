@@ -3,17 +3,18 @@ package com.apx.estudio;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class RelojArenaCodeHacker {
 	
 	// Complete the hourglassSum function below.
     static int hourglassSum(int[][] arr) {
+    	ArrayList<Integer> sumasReloj = new ArrayList<>();
     	int[][] reloj;
     	int sumMax = 0;
     	
-    	for(int fi =0;fi <arr.length - 2;fi++) {//Ciclo inicial 
-    		System.out.println("***   FILA "+ fi +"***");
+    	for(int fi =0;fi <arr.length - 2;fi++) {//Ciclo inicial
     		int recoridoC = 0;
     		for(int t = 0;t<4;t++) { //fin ciclo recorre reloj primeras 3 filas
         		reloj = new int[3][3];
@@ -49,14 +50,32 @@ public class RelojArenaCodeHacker {
         			}
         		}
         		sumAct += reloj[1][1];
-        		if(sumAct > sumMax) {
-        			sumMax = sumAct;
-        		}
+        		sumasReloj.add(sumAct);
         		recoridoC++;
         	}//fin ciclo recorre reloj primeras 3 filas
     		
     		
     	}//end ciclo inicial 
+    	int[] valOri = new int[sumasReloj.size()];
+    	for(int r=0;r<valOri.length;r++) {
+    		valOri[r] = sumasReloj.get(r).intValue();
+    	}
+    	int[] valordenados = new int[valOri.length]; 
+    	int auxiliar;
+        for(int i = 1; i < valOri.length; i++)
+        {
+          for(int j = 0;j < valOri.length-i;j++)
+          {
+            if(valOri[j] > valOri[j+1])
+            {
+              auxiliar = valOri[j];
+              valOri[j] = valOri[j+1];
+              valOri[j+1] = auxiliar;
+            }   
+          }
+        }
+        valordenados = valOri;
+        sumMax = valordenados[valordenados.length -1];
     	return sumMax;
     }
 

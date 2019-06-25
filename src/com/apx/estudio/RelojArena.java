@@ -10,12 +10,9 @@ public class RelojArena {
 	
 	// Complete the hourglassSum function below.
     static int hourglassSum(int[][] arr) {
-//    	ArrayList<Integer> sumasReloj = new ArrayList<>();
+    	ArrayList<Integer> sumasReloj = new ArrayList<>();
     	int[][] reloj;
     	int sumMax = 0;
-    	
-    	
-    	int recoridoF = 0;
     	
     	for(int fi =0;fi <arr.length - 2;fi++) {//Ciclo inicial 
     		System.out.println("***   FILA "+ fi +"***");
@@ -37,15 +34,12 @@ public class RelojArena {
                 				break;
                 			}
                 			
-//                			System.out.print(arr[f][c] + " ");
-                			
                 		}
             			rf++;
             		}else {
             			break;
             		}
             		
-//            		System.out.println();
             	}
             	
             	//IMPRIME RELOJ
@@ -60,26 +54,45 @@ public class RelojArena {
         			System.out.println();
         		}
         		sumAct += reloj[1][1];
-//        		sumasReloj.add(sumAct);
+        		sumasReloj.add(sumAct);
         		
-        		if(sumAct > sumMax) {
-        			sumMax = sumAct;
-        		}
-        		 
         		System.out.println("######################### suma reloj: " + sumAct);
         		recoridoC++;
         	}//fin ciclo recorre reloj primeras 3 filas
     		
-    		
     	}//end ciclo inicial 
     	 
     	System.out.println("Suma mayor: " + sumMax);
-//    	System.out.println("Arreglo con valores:");
-//    	for(int t:sumasReloj) {
-//    		System.out.println(t);
-//    	}
-//    	
-//    	Integer[] valoresReloj = (Integer[]) sumasReloj.toArray();
+    	System.out.println("Arreglo con valores sin ordenar:");
+    	for(int t:sumasReloj) {
+    		System.out.println(t);
+    	}
+    	
+    	System.out.println("---------------------ORDENADO--------------------------");
+    	int[] valOri = new int[sumasReloj.size()];
+    	for(int r=0;r<valOri.length;r++) {
+    		valOri[r] = sumasReloj.get(r).intValue();
+    	}
+    	int[] valordenados = new int[valOri.length]; 
+    	int auxiliar;
+        for(int i = 1; i < valOri.length; i++)
+        {
+          for(int j = 0;j < valOri.length-i;j++)
+          {
+            if(valOri[j] > valOri[j+1])
+            {
+              auxiliar = valOri[j];
+              valOri[j] = valOri[j+1];
+              valOri[j+1] = auxiliar;
+            }   
+          }
+        }
+        valordenados = valOri;
+        
+        for(int i = 0; i < valordenados.length;i++) {
+        	System.out.println(valordenados[i]);
+        }
+	        sumMax = valordenados[valordenados.length -1];
     	return sumMax;
     }
 
